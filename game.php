@@ -4,8 +4,9 @@
 session_start();
 
 $letters = "ABCDEFGHIJQLMNOPQRSTUVWXYZ";
+$WON = false;
 
-$guess = "HANGMAN";
+$guess = "SEGOVIA";
 $maxLetters = strlen($guess) - 1;
 $responses = ["H", "G", "A"];
 
@@ -50,6 +51,7 @@ function getCurrentPart()
 
 function getCurrentWord()
 {
+    // return "SEGOVIA";
     global $words;
     if (!isset($_SESSION["word"]) && empty($_SESSION["word"])) {
         $key = array_rand($words);
@@ -60,7 +62,7 @@ function getCurrentWord()
 
 function getcurrentResponses()
 {
-    return isset($_SESSION["responses"]) ? $_SERVER["responses"] : [];
+    return isset($_SESSION["responses"]) ? $_SESSION["responses"] : [];
 }
 
 function addResponse($letter)
@@ -94,6 +96,7 @@ function isWordCorrect()
     }
     return true;
 }
+
 function isBodyComplete()
 {
     $parts = getParts();
@@ -137,6 +140,7 @@ function markGameAsNew()
 //Para saber que el juegp se reinicia
 
 if (isset($_GET['start'])) {
+    restartGame();
 }
 
 //Para saber cuando se ha pulsado KeyPresset KP
@@ -182,6 +186,7 @@ if (isset($_GET['kp'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Juego del Ahorcado</title>
 </head>
 
@@ -191,6 +196,17 @@ if (isset($_GET['kp'])) {
         <div style="width:500px; display:inline-block; background:#fff1;">
             <img src="<?php echo getCurrentPicture(getCurrentPart()); ?> " alt=""
                 style=" width :80%; display:inline-block;">
+
+            <!--Indicar el estado del juego-->
+            <?Php if (gameComplete()) : ?>
+            <h1>GAME COMPLETE</h1>
+            <?php endif; ?>
+            <?php if ($WON  && gameComplete()) : ?>
+            <p style="color: darkgreen; font-size: 25px;">HAS GANADO! VIVA!! :)</p>
+            <?php elseif (!$WON  && gameComplete()) : ?>
+            <p style="color: darkred; font-size: 25px;"> OH NO! HAS PERDIDO :(</p>
+            <?php endif; ?>
+
         </div>
 
         <div style="float:right; display:inline; vertical-align:top">
@@ -202,7 +218,7 @@ if (isset($_GET['kp'])) {
                     $max = strlen($letters) - 1;
                     for ($i = 0; $i <= $max; $i++) {
                         echo "<button type='submit' name='kp' value='" . $letters[$i] . "'>" . $letters[$i] . "</button>";
-                        if ($i % 7 == 0 && $i > 0) {
+                        if ($i %  10 == 0 && $i > 0) {
                             echo '<br>';
                         }
                     }
@@ -218,12 +234,14 @@ if (isset($_GET['kp'])) {
             </div>
         </div>
 
-        <div style=" margin-top:20px; padding:15px; background:lightseagreen ;color:#fcf8e3">
-            <?php for ($j = 0; $j <= $maxLetters; $j++) : ?>
-
-            <span style="font-size:35px; border-bottom: 3px solid #000; margin-right:5px;"> A</span>
-            < <?php endfor; ?> </div>
-
+        <div style="margin-top:20px; padding:15px; background: lightseagreen; color: #fcf8e3">
+            <?php for ($j = 0; $j <= $maxLetters; $j++) : $l = getCurrentWord()[$j]; ?>
+            <?php if (in_array($l, getCurrentResponses())) : ?>
+            <span style="font-size: 35px; border-bottom: 3px solid #000; margin-right: 5px;"><?php echo $l; ?></span>
+            <?php else : ?>
+            <span style="font-size: 35px; border-bottom: 3px solid #000; margin-right: 5px;">&nbsp;&nbsp;&nbsp;</span>
+            <?php endif; ?>
+            <?php endfor; ?>
         </div>
 
 
