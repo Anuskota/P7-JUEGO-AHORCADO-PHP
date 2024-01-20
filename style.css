@@ -1,3 +1,48 @@
 body{
-    
+    background: deepskyblue;
 }
+.container{
+        margin :0 auto;
+        background: #dddddd; 
+        width:900px; 
+        height:900px;
+        padding:5px;
+        border-radius:3px
+}
+.picture{
+    width:500px;
+    display:inline-block; 
+    background:#fff1
+}
+img{
+    width :80%; 
+    display:inline-block
+}
+.win{
+    color: darkgreen; 
+    font-size: 25px
+}
+.loss{
+    color: darkred; 
+    font-size: 25px;
+}
+.letters{
+    float:right; 
+    display:inline; 
+    vertical-align:top
+}
+.form{
+    display:inline-block
+}
+.hidden-letters{
+    margin-top:20px; 
+    padding:15px; 
+    background: lightseagreen; 
+    color: #fcf8e3
+}
+span{
+    font-size: 35px;
+    border-bottom: 3px solid #000;
+    margin-right: 5px
+}
+

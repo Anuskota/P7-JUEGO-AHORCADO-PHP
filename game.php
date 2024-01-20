@@ -190,29 +190,28 @@ if (isset($_GET['kp'])) {
     <title>Juego del Ahorcado</title>
 </head>
 
-<body style="background: deepskyblue;">
-    <div style=" margin :0 auto; background: #dddddd; width:900px; height:900px; padding:5px; border-radius:3px ">
+<body>
+    <div class="container">
 
-        <div style="width:500px; display:inline-block; background:#fff1;">
-            <img src="<?php echo getCurrentPicture(getCurrentPart()); ?> " alt=""
-                style=" width :80%; display:inline-block;">
+        <div class="picture">
+            <img src=" <?php echo getCurrentPicture(getCurrentPart()); ?> " alt="imagen">
 
             <!--Indicar el estado del juego-->
             <?Php if (gameComplete()) : ?>
             <h1>GAME COMPLETE</h1>
             <?php endif; ?>
             <?php if ($WON  && gameComplete()) : ?>
-            <p style="color: darkgreen; font-size: 25px;">HAS GANADO! VIVA!! :)</p>
+            <p class="win">HAS GANADO! VIVA!! :)</p>
             <?php elseif (!$WON  && gameComplete()) : ?>
-            <p style="color: darkred; font-size: 25px;"> OH NO! HAS PERDIDO :(</p>
+            <p class="loss"> OH NO! HAS PERDIDO :(</p>
             <?php endif; ?>
 
         </div>
 
-        <div style="float:right; display:inline; vertical-align:top">
+        <div class="letters">
             <h1>Juego del Ahorcado</h1>
-            <div style="display:inline-block;">
-                <form method="get">
+            <div class="form">
+                <form method=" get">
 
                     <?php
                     $max = strlen($letters) - 1;
@@ -234,12 +233,12 @@ if (isset($_GET['kp'])) {
             </div>
         </div>
 
-        <div style="margin-top:20px; padding:15px; background: lightseagreen; color: #fcf8e3">
+        <div class="hidden-letters">
             <?php for ($j = 0; $j <= $maxLetters; $j++) : $l = getCurrentWord()[$j]; ?>
             <?php if (in_array($l, getCurrentResponses())) : ?>
-            <span style="font-size: 35px; border-bottom: 3px solid #000; margin-right: 5px;"><?php echo $l; ?></span>
+            <span><?php echo $l; ?></span>
             <?php else : ?>
-            <span style="font-size: 35px; border-bottom: 3px solid #000; margin-right: 5px;">&nbsp;&nbsp;&nbsp;</span>
+            <span>&nbsp;&nbsp;&nbsp;</span>
             <?php endif; ?>
             <?php endfor; ?>
         </div>
