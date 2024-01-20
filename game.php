@@ -234,7 +234,11 @@ if (isset($_GET['kp'])) {
         </div>
 
         <div class="hidden-letters">
-            <?php for ($j = 0; $j <= $maxLetters; $j++) : $l = getCurrentWord()[$j]; ?>
+
+            <?php
+            $guess = getCurrentWord();
+            $maxLetters = strlen($guess) - 1;
+            for ($j = 0; $j <= $maxLetters; $j++) : $l = getCurrentWord()[$j]; ?>
             <?php if (in_array($l, getCurrentResponses())) : ?>
             <span><?php echo $l; ?></span>
             <?php else : ?>
