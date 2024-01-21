@@ -11,8 +11,8 @@ $maxLetters = strlen($guess) - 1;
 $responses = ["H", "G", "A"];
 
 
-$bodyParts = ["1", "2", "3", "4", "5", "6", "7", "8", "9","10"];
-$words = ["FEMCODERS", "SEGOVIA", "LIBERTAD", "SUEÑO", "INTELIGENCIA", "CANSALIEBRES", "GAMBITERO", "ANIS"];
+$bodyParts = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+$words = ["MADRID", "SEGOVIA", "OVIEDO", "BILBAO", "SANTANDER", "MALAGA", "JAEN", "GUADALAJARA", "SALAMANCA", "CACERES", "ORENSE", "PONTEVEDRA", "BARCELONA"];
 
 
 
