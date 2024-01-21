@@ -11,7 +11,7 @@ $maxLetters = strlen($guess) - 1;
 $responses = ["H", "G", "A"];
 
 
-$bodyParts = ["cabeza", "cabeza_y_tronco", "tronco_y_mano", "tronco_y_2manos", "tronco_y_2manos_ypie", "tronco_y2_pies", "gorro", "ojos", "FIN"];
+$bodyParts = ["1", "2", "3", "4", "5", "6", "7", "8", "9","10"];
 $words = ["FEMCODERS", "SEGOVIA", "LIBERTAD", "SUEÑO", "INTELIGENCIA", "CANSALIEBRES", "GAMBITERO", "ANIS"];
 
 
@@ -187,7 +187,7 @@ if (isset($_GET['kp'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Juego del Ahorcado</title>
+    <title>Juego del Payasu</title>
 </head>
 
 <body>
@@ -209,7 +209,7 @@ if (isset($_GET['kp'])) {
         </div>
 
         <div class="letters">
-            <h1>Juego del Ahorcado</h1>
+            <h1>Juego del Payasu</h1>
             <div class="form">
                 <form method=" get">
 
